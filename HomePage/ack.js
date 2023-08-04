@@ -13,7 +13,7 @@ function doSomething(button) {
     const acceptCheckbox = document.getElementById("accept");
     const declineCheckbox = document.getElementById("decline");
     if(acceptCheckbox.checked){
-        window.location.href = "./register.html";
+        window.location.href = "../Surrender/register.html";
     }
     else if(declineCheckbox.checked){
         alert("Please Accept the terms and condition");

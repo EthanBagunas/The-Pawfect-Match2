@@ -1,22 +1,40 @@
-var con = require('./connection');
+//var con = require('./connection');
 var express  = require('express');
 var app = express();
-
-
 var cors= require('cors')
-const path= require('path');
-var bodyParser = require('body-parser');
+
+const multer = require('multer');
 
 
+
+
+app.use(cors());
+app.use(express.urlencoded({
+  extended: false, // Whether to use algorithm that can handle non-flat data strutures
+  limit: 10000, // Limit payload size in bytes
+  parameterLimit: 1000, // Limit number of form items on payload
+}));
+
+
+app.post('/upload', function(req, res) {
+
+  console.log(req.body);
+  // { firstName: 'Barry', lastName: 'Manilow' }
+
+});
+
+
+const port = 7000;
+
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
+});
+
+
+/*
 var multer =require("multer");
 const storage = multer.memoryStorage(); 
 const upload =multer({ storage:multer.memoryStorage()});
-
-app.use(cors());
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended:true }));
-
-
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '../client/register.html')); // currently register.html
   });
@@ -44,9 +62,4 @@ app.post('/',upload.single('petpic') ,function(req,res){
         });
     });
 });
-
-const port = 7000;
-
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
-});
+*/
